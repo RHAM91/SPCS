@@ -24,8 +24,11 @@
                                 <i class="fas fa-address-card"></i> &nbsp;&nbsp; {{itemMiembro.dpi}}
                             </div>
                             <div class="seccion_2">
-                                <i class="fas fa-user-edit" title="Creador"></i> &nbsp;&nbsp; Ingresado por: {{creador}}
+                                <i class="fas fa-user-tie"></i> &nbsp;&nbsp; {{itemMiembro.cargo}}
                             </div>
+                            <!-- <div class="seccion_2">
+                                <i class="fas fa-user-edit" title="Creador"></i> &nbsp;&nbsp; Ingresado por: {{creador}}
+                            </div> -->
                             <div class="seccion_2" style="margin-top: 110px;">
                                 <b-button size="sm" variant="info" class="mb-2">
                                     <b-icon icon="printer" aria-hidden="true"></b-icon> Imprimir
@@ -46,10 +49,10 @@
                         </div>
                     </b-col>
                     <b-col sm="12" class="mt-3">
-                        <b-tabs content-class="mt-3" fill>
+                        <b-tabs content-class="mt-3" >
                             <b-tab title="Información personal" @click="set_submodulo('InformacionGeneral')" active></b-tab>
-                            <b-tab title="Información Iglesia" @click="set_submodulo('InformacionIglesia')"></b-tab>
-                            <b-tab title="Información de hijos" @click="set_submodulo('InformacionHijos')"></b-tab>
+                            <!-- <b-tab title="Información Iglesia" @click="set_submodulo('InformacionIglesia')"></b-tab>
+                            <b-tab title="Información de hijos" @click="set_submodulo('InformacionHijos')"></b-tab> -->
                         </b-tabs>
                     </b-col>
 
@@ -93,7 +96,7 @@ export default {
     },
     data() {
         return {
-            submodulo: 'InformacionGeneral',
+            submodulo: '',
             takefoto: false,
             expandir_foto: false,
             itemMiembro: {},
@@ -109,9 +112,9 @@ export default {
             this.creador = `${f.nombre.split(' ')[0]} ${f.apellidos.split(' ')[0]}`
         },
         async obtenerDatos(){
-            let f = await this.getData({api: `miembros/${this.dpi}`})
+            let f = await this.getData({api: `pastores/${this.dpi}`})
             this.itemMiembro = f
-            await this.obtenerCreador()
+            //await this.obtenerCreador()
 
         },
         set_submodulo(modulo){
