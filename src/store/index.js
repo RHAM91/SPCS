@@ -48,12 +48,12 @@ export default new Vuex.Store({
       tipo: '',
       loading_icono: false,
       rutas:[
-        {api:'profesiones', set: 'set_profesiones'},
+        //{api:'profesiones', set: 'set_profesiones'},
         {api:'permisos', set: 'set_permisos'},
-        {api:'ancianos', set: 'set_ancianos'},
-        {api:'estadocivil', set: 'set_estadocivil'},
-        {api:'lugaresdiscipulado', set: 'set_lugares_discipulado'},
-        {api:'asignacion_entrevistas', set: 'set_entrevistas'}
+        // {api:'ancianos', set: 'set_ancianos'},
+        // {api:'estadocivil', set: 'set_estadocivil'},
+        // {api:'lugaresdiscipulado', set: 'set_lugares_discipulado'},
+        // {api:'asignacion_entrevistas', set: 'set_entrevistas'}
       ],
 
     //-----> produccion

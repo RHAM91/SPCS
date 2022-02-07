@@ -29,15 +29,15 @@
                         </div>
 					</template>
 
-                    <template v-slot:cell(direccion) = 'dire'>
-                        <div style="display: flex;align-items:center;height: 40px;">
-                            {{dire.item.direccion}}
+                    <template v-slot:cell(cargo) = 'dire'>
+                        <div style="display: flex;align-items:center;justify-content:center;height: 40px;">
+                            {{dire.item.cargo}}
                         </div>
 					</template>
 
-                    <template v-slot:cell(telefono) = 'tel'>
+                    <template v-slot:cell(nombre_iglesia) = 'tel'>
                         <div style="display: flex;justify-content:center;align-items:center;height: 40px;">
-                            {{tel.item.telefono}}
+                            {{tel.item.nombre_iglesia}}
                         </div>
 					</template>
                     
@@ -95,15 +95,15 @@ export default {
                 },
                 {
                     key: 'nombre',
-                    thStyle: 'width: 32%;',
+                    thStyle: 'width: 35%;',
                 },
                 {
-                    key: 'direccion',
-                    thStyle: 'width: 40%;'
+                    key: 'cargo',
+                    thStyle: 'width: 10%;text-align:center;'
                 },
                 {
-                    key: 'telefono',
-                    thStyle: 'width: 8%;text-align:center;'
+                    key: 'nombre_iglesia',
+                    thStyle: 'width: 35%;text-align:center;'
                 },
                 {
                     key: 'btn',
@@ -121,7 +121,7 @@ export default {
                 document.getElementById('clie').focus()
             }else{
                 let data = {
-                    api: `miembros/nombre/${this.search.toUpperCase()}`,
+                    api: `pastores/nombre/${this.search.toUpperCase()}`,
                 }
 
                 let r = await this.getData(data)

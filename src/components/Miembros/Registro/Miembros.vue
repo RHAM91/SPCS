@@ -3,14 +3,14 @@
         <b-row>
             <b-col sm="12" class="mt-3">
                 <h1>
-                    Miembros
+                    Pastores
                 </h1>
             </b-col>
             <b-col sm="12">
-                <b-tabs content-class="mt-3" fill>
+                <b-tabs content-class="mt-3">
                     <b-tab title="Registro Información general" @click="setSubModulo('InformacionGeneral')" active></b-tab>
-                    <b-tab title="Registro datos Iglesia" id="modulo_1" :disabled="modulo_1"  @click="setSubModulo('DatosIglesia')" ></b-tab>
-                    <b-tab title="Registro datos hijos" id="modulo_2" :disabled="modulo_2" @click="setSubModulo('DatosHijos')"></b-tab>
+                    <!-- <b-tab title="Registro datos Iglesia" id="modulo_1" :disabled="modulo_1"  @click="setSubModulo('DatosIglesia')" ></b-tab>
+                    <b-tab title="Registro datos hijos" id="modulo_2" :disabled="modulo_2" @click="setSubModulo('DatosHijos')"></b-tab> -->
                 </b-tabs>
             </b-col>
             

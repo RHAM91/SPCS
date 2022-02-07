@@ -5,7 +5,7 @@
 
 
             <div class="top_cuerpo_seccion_b">
-                Miembros
+                Menú
             </div>
 
             <div class="submenu_titulo">
@@ -16,7 +16,7 @@
                     <i class="fas fa-database"></i>
                 </div>
                 <div class="submenu_modulo_texto" @click="set_submodulo('miembros')">
-                    Miembros
+                    Pastores
                 </div>
             </div>
 
