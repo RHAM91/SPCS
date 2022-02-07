@@ -12,7 +12,6 @@ import os from 'os'
 import macaddress from 'macaddress'
 import { stderr, stdout } from 'process'
 import path from 'path'
-//import { execFile }  from 'child_process'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -171,6 +170,54 @@ ipcMain.on('ActualizarModulo', (event)=>{
 
     })
   })
+})
+
+
+ipcMain.on('foto', (event,args)=>{
+
+  let photoData = args
+
+
+  function savePhoto(filePath){
+    if(filePath){
+      fs.writeFile(filePath, photoData, 'base64', (err)=>{
+          if (err) {
+              console.log(`Hubo un problema al guardar la foto ${err.message}`)
+          }
+          photoData = null
+      })
+  }
+  }
+
+
+dialog.showSaveDialog({
+  title: "Guardar foto",
+  defaultPath: 'myfacebomb.png',
+  buttonLabel: 'Guardar foto'
+}).then((result)=>{
+
+  if (!result.canceled) {
+    let ruta = result.filePath
+    savePhoto(ruta)
+
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Aceptar'],
+      title: 'Información',
+      message: `Foto guardada con éxito`
+    }
+
+    dialog.showMessageBox(dialogOpts).then(({ response }) => {
+      if (response === 0) console.log('nada')
+    })
+  }
+
+
+}).catch((err)=>{
+  console.log(err)
+})
+
+
 })
 
 
