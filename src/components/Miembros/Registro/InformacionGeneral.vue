@@ -8,9 +8,13 @@
                         <b-form-input type="text" id="cui" v-model="cui" required autocomplete="off" size="sm"></b-form-input>
                     </b-col>
 
-                    <b-col sm="6" class="mt-3">
-                        <label for="">Nombre completo</label>
+                    <b-col sm="3" class="mt-3">
+                        <label for="">Nombres</label>
                         <b-form-input type="text" v-model="nombre" required autocomplete="off" size="sm"></b-form-input>
+                    </b-col>
+                    <b-col sm="3" class="mt-3">
+                        <label for="">Apellidos</label>
+                        <b-form-input type="text" v-model="apellidos" required autocomplete="off" size="sm"></b-form-input>
                     </b-col>
 
                     <b-col sm="3" class="mt-3">
@@ -81,6 +85,7 @@ export default {
             mostrarCampoFechaFallecimiento: false,
             cui: '',
             nombre: '',
+            apellidos: '',
             cargo: '',
             nombre_iglesia: '',
             telefono: '',
@@ -104,15 +109,16 @@ export default {
                 api: 'pastores',
                 pull: false,
                 formulario: {
-                    dpi: this.cui,
-                    nombre: this.nombre.toUpperCase(),
-                    cargo: this.cargo.toUpperCase(),
-                    nombre_iglesia: this.nombre_iglesia.toUpperCase(),
-                    telefono: this.telefono,
-                    correo: this.correo,
-                    pais: this.pais.toUpperCase(),
-                    area: this.area,
-                    region: this.region.toUpperCase()
+                    dpi: this.cui.trim(),
+                    nombre: this.nombre.toUpperCase().trim(),
+                    apellidos: this.apellidos.toUpperCase().trim(),
+                    cargo: this.cargo.toUpperCase().trim(),
+                    nombre_iglesia: this.nombre_iglesia.toUpperCase().trim(),
+                    telefono: this.telefono.trim(),
+                    correo: this.correo.trim(),
+                    pais: this.pais.toUpperCase().trim(),
+                    area: this.area.trim(),
+                    region: this.region.toUpperCase().trim()
                 }
             }
 
@@ -121,6 +127,7 @@ export default {
 
                 this.cui = ''
                 this.nombre = ''
+                this.apellidos = ''
                 this.cargo = ''
                 this.nombre_iglesia = ''
                 this.telefono = ''
@@ -140,6 +147,7 @@ export default {
             let info = {
                 cui: this.cui,
                 nombre: this.nombre,
+                apellidos: this.apellidos,
                 cargo: this.cargo,
                 nombre_iglesia: this.nombre_iglesia,
                 telefono: this.telefono,
@@ -159,6 +167,7 @@ export default {
                 
                 this.cui = r.cui
                 this.nombre = r.nombre
+                this.apellidos = r.apellidos
                 this.cargo = r.cargo
                 this.nombre_iglesia = r.nombre_iglesia
                 this.telefono = r.telefono

@@ -4,12 +4,12 @@
             <div class="icono_menu_a" @click="set_modulo('Miembros')">
                 <i class="fas fa-compass"></i>
             </div>
-            <div class="icono_menu_a" @click="set_modulo('Entrevistas')">
+            <!-- <div class="icono_menu_a" @click="set_modulo('Entrevistas')">
                 <i class="fas fa-file-csv"></i>
             </div>
             <div class="icono_menu_a" @click="set_modulo('Configuracion')">
                 <i class="fas fa-cog"></i>
-            </div>
+            </div> -->
 
             <b-button type="button" class="btn_logout" size="sm" title="Cerrar Sesión" variant="danger" @click="salir"><i class="fas fa-sign-out-alt"></i></b-button>
 

@@ -29,7 +29,7 @@
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="submenu_modulo_texto" @click="set_submodulo('buscar_miembro')">
-                    Buscar miembro
+                    Buscar pastor
                 </div>
             </div>
 

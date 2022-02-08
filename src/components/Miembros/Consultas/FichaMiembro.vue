@@ -7,12 +7,12 @@
             </div>
             <b-container >
                 <b-row>
-                    <b-col sm="3" class="mt-3">
+                    <b-col sm="5" lg="3" class="mt-3">
                         <div class="foto_informacion">
                             <img :src="itemMiembro.foto" style="width: 100%; height: 100%;"  @dblclick="expandirFoto" alt="">
                         </div>
                     </b-col>
-                    <b-col sm="9" class="mt-3">
+                    <b-col sm="7" lg="9" class="mt-3">
                         <div class="informacion_basica">
                             <div class="inombre" style="color: #2a2a2a;">
                                 {{itemMiembro.nombre}}
