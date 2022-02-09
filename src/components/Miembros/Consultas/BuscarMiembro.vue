@@ -117,7 +117,7 @@ export default {
         async buscar(){
             // optimizar: se podría crear una ruta que solo devuelta el dpi, para que este se envie a la FichaMiembro.vue y alli si descargue toda la informacion segun el dpi
             if (this.search == '' || this.search == undefined) {
-                minix({icon: 'info', mensaje: 'Escribe algo para buscar', tiempo: 3000})
+                minix({icon: 'info', mensaje: 'Escribe algo para buscar', tiempo: 1000})
                 document.getElementById('clie').focus()
             }else{
                 let data = {
@@ -125,7 +125,12 @@ export default {
                 }
 
                 let r = await this.getData(data)
-                this.registros = r
+                if (r.message) {
+                    minix({icon: 'info', mensaje: r.message, tiempo: 1000})
+                }else{
+                    this.registros = r
+                }
+
             }
         },
         abrir_modal_ficha(item){
