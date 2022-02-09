@@ -147,7 +147,7 @@ export default new Vuex.Store({
 
             if (r.status == 200) {
 
-                minix({icon: 'success', mensaje: r.data.message, tiempo: 200})
+                minix({icon: 'success', mensaje: r.data.message, tiempo: 2000})
                 
                 if (data.pull == true) {
                     dispatch('notificacion', data.api)
