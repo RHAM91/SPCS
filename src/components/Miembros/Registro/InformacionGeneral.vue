@@ -57,14 +57,14 @@
 
                     <b-col sm="4" class="mt-3">
                         <label for="">País</label>
-                        <!-- <b-form-input type="text" v-model="pais" placeholder="Opcional" autocomplete="off" size="sm"></b-form-input> -->
-                        <select class="form-control form-control-sm" v-model="pais" required>
+                        <b-form-input type="text" v-model="pais" id="pais_form" placeholder="Opcional" autocomplete="off" size="sm"></b-form-input>
+                        <!-- <select class="form-control form-control-sm" v-model="pais" required>
                             <option value="">Selecciona</option>
                             <option value="ecuador">Ecuador</option>
                             <option value="guatemala">Guatemala</option>
                             <option value="mexico">México</option>
                             <option value="usa">USA</option>
-                        </select>
+                        </select> -->
                     </b-col>
 
                     <b-col sm="12" class="mt-3 d-flex flex-row-reverse">
@@ -126,6 +126,9 @@ export default {
             }else if(this.nombre_iglesia.length > 20){
                 minix({icon: 'info', mensaje: 'Nombre iglesia no puede ser mayor a 20 caracteres', tiempo: 3000})
                 document.getElementById('nombre_iglesia_form').focus()
+            }else if(this.pais.length > 20){
+                minix({icon: 'info', mensaje: 'País no puede ser mayor a 21 caracteres', tiempo: 3000})
+                document.getElementById('pais_form').focus()
             }else{
 
                 let f = {
