@@ -147,7 +147,7 @@ export default new Vuex.Store({
 
             if (r.status == 200) {
 
-                minix({icon: 'success', mensaje: r.data.message, tiempo: 3000})
+                minix({icon: 'success', mensaje: r.data.message, tiempo: 200})
                 
                 if (data.pull == true) {
                     dispatch('notificacion', data.api)
@@ -162,7 +162,7 @@ export default new Vuex.Store({
             }
         } catch (e) {
             if(e.response.status == 403){
-                minix({icon: 'error', mensaje: e.response.data.message, tiempo: 3000})
+                minix({icon: 'error', mensaje: e.response.data.message, tiempo: 2000})
             }else{
                 minix({icon: 'info', mensaje: e.response.data.message, tiempo: 5000})
             }
@@ -181,7 +181,7 @@ export default new Vuex.Store({
                 return r.data
 
             }else{
-                minix({icon: 'info', mensaje: r.data.message, tiempo: 6000})
+                minix({icon: 'info', mensaje: r.data.message, tiempo: 2000})
                 commit('set_loading', false)
             }
             
@@ -202,7 +202,7 @@ export default new Vuex.Store({
             const r = await axios.delete(`http://${IP}:${PUERTO}/api/${data.api}/${data.id}`, state.token)
 
             if(r.status == 200){
-                minix({icon: 'success', mensaje: r.data.message, tiempo: 3000})
+                minix({icon: 'success', mensaje: r.data.message, tiempo: 2000})
 
                 if(data.pull == true){
                     dispatch('notificacion', data.api)
@@ -240,7 +240,7 @@ export default new Vuex.Store({
 
             const archivo = await axios.post(`http://${IP}:${PUERTO}/api/${data.api}`, formData, state.token)
       
-            minix({icon: 'success', mensaje: archivo.data.message, tiempo: 3000})
+            minix({icon: 'success', mensaje: archivo.data.message, tiempo: 2000})
             commit('set_loading', false)
             
 
@@ -264,7 +264,7 @@ export default new Vuex.Store({
                 const r = await axios.put(`http://${IP}:${PUERTO}/api/${data.api}/${data.id}`, data.formulario, state.token)
 
                 if (r.status == 200) {
-                    minix({icon: 'success', mensaje: r.data.message, tiempo: 3000})
+                    minix({icon: 'success', mensaje: r.data.message, tiempo: 2000})
     
                     if(data.pull == true){
                         dispatch('notificacion', data.api)
@@ -290,7 +290,7 @@ export default new Vuex.Store({
                 const r = await axios.put(`http://${IP}:${PUERTO}/api/${data.api}`, data.formulario, state.token)
 
                 if (r.status == 200) {
-                    minix({icon: 'success', mensaje: r.data.message, tiempo: 3000})
+                    minix({icon: 'success', mensaje: r.data.message, tiempo: 2000})
     
                     if(data.pull == true){
                         if (data.modo == 'query') {
@@ -307,7 +307,7 @@ export default new Vuex.Store({
     
                     commit('set_loading', false)
                 }else{
-                    minix({icon: 'info', mensaje: r.data.message, tiempo: 3000})
+                    minix({icon: 'info', mensaje: r.data.message, tiempo: 2000})
                     commit('set_loading', false)
                 }
 
@@ -338,7 +338,7 @@ export default new Vuex.Store({
 
         } catch (e) {
             if(e.response.status == 403){
-                minix({icon: 'error', mensaje: e.response.data.message, tiempo: 3000})
+                minix({icon: 'error', mensaje: e.response.data.message, tiempo: 2000})
             }else{
                 minix({icon: 'info', mensaje: e.response.data.message, tiempo: 5000})
             }

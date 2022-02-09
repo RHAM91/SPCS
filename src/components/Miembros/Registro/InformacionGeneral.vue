@@ -10,11 +10,11 @@
 
                     <b-col sm="3" class="mt-3">
                         <label for="">Nombres</label>
-                        <b-form-input type="text" v-model="nombre" required autocomplete="off" size="sm"></b-form-input>
+                        <b-form-input type="text" v-model="nombre" id="nombre_form" required autocomplete="off" size="sm"></b-form-input>
                     </b-col>
                     <b-col sm="3" class="mt-3">
                         <label for="">Apellidos</label>
-                        <b-form-input type="text" v-model="apellidos" required autocomplete="off" size="sm"></b-form-input>
+                        <b-form-input type="text" v-model="apellidos" id="apellidos_form" required autocomplete="off" size="sm"></b-form-input>
                     </b-col>
 
                     <b-col sm="3" class="mt-3">
@@ -28,7 +28,7 @@
 
                     <b-col sm="12" class="mt-3">
                         <label for="">Nombre de la iglesia</label>
-                        <b-form-input type="text" v-model="nombre_iglesia" required autocomplete="off" size="sm"></b-form-input>
+                        <b-form-input type="text" v-model="nombre_iglesia" id="nombre_iglesia_form" required autocomplete="off" size="sm"></b-form-input>
                     </b-col>
                     
                     <b-col sm="6" class="mt-3">
@@ -57,7 +57,14 @@
 
                     <b-col sm="4" class="mt-3">
                         <label for="">País</label>
-                        <b-form-input type="text" v-model="pais" placeholder="Opcional" autocomplete="off" size="sm"></b-form-input>
+                        <!-- <b-form-input type="text" v-model="pais" placeholder="Opcional" autocomplete="off" size="sm"></b-form-input> -->
+                        <select class="form-control form-control-sm" v-model="pais" required>
+                            <option value="">Selecciona</option>
+                            <option value="ecuador">Ecuador</option>
+                            <option value="guatemala">Guatemala</option>
+                            <option value="mexico">México</option>
+                            <option value="usa">USA</option>
+                        </select>
                     </b-col>
 
                     <b-col sm="12" class="mt-3 d-flex flex-row-reverse">
@@ -73,6 +80,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import { minix } from '../../functions/alertas'
 
 
 export default {
@@ -105,40 +113,57 @@ export default {
             }
         },
         async guardar(){
-            let f = {
-                api: 'pastores',
-                pull: false,
-                formulario: {
-                    dpi: this.cui.trim(),
-                    nombre: this.nombre.toUpperCase().trim(),
-                    apellidos: this.apellidos.toUpperCase().trim(),
-                    cargo: this.cargo.toUpperCase().trim(),
-                    nombre_iglesia: this.nombre_iglesia.toUpperCase().trim(),
-                    telefono: this.telefono.trim(),
-                    correo: this.correo.trim(),
-                    pais: this.pais.toUpperCase().trim(),
-                    area: this.area.trim(),
-                    region: this.region.toUpperCase().trim()
+
+            if (this.nombre.length > 20) {
+
+                minix({icon: 'info', mensaje: 'Nombre no puede ser mayor a 20 caracteres', tiempo: 3000})
+                document.getElementById('nombre_form').focus()
+
+            }else if(this.apellidos.length > 20){
+                minix({icon: 'info', mensaje: 'Apellidos no puede ser mayor a 20 caracteres', tiempo: 3000})
+                document.getElementById('apellidos_form').focus()
+                
+            }else if(this.nombre_iglesia.length > 20){
+                minix({icon: 'info', mensaje: 'Nombre iglesia no puede ser mayor a 20 caracteres', tiempo: 3000})
+                document.getElementById('nombre_iglesia_form').focus()
+            }else{
+
+                let f = {
+                    api: 'pastores',
+                    pull: false,
+                    formulario: {
+                        dpi: this.cui.trim(),
+                        nombre: this.nombre.toUpperCase().trim(),
+                        apellidos: this.apellidos.toUpperCase().trim(),
+                        cargo: this.cargo.toUpperCase().trim(),
+                        nombre_iglesia: this.nombre_iglesia.toUpperCase().trim(),
+                        telefono: this.telefono.trim(),
+                        correo: this.correo.trim(),
+                        pais: this.pais.toUpperCase().trim(),
+                        area: this.area.trim(),
+                        region: this.region.toUpperCase().trim()
+                    }
                 }
+    
+                    await this.saveData(f)
+                    //await this.pullData({api: 'entrevistas'})
+    
+                    this.cui = ''
+                    this.nombre = ''
+                    this.apellidos = ''
+                    this.cargo = ''
+                    this.nombre_iglesia = ''
+                    this.telefono = ''
+                    this.correo = ''
+                    this.pais = ''
+                    this.area = ''
+                    this.region = ''
+                    
+    
+                    this.set_datos_personales('')
+                    //this.$emit('comprobacion', 'modulo_1')
             }
 
-            await this.saveData(f)
-            //await this.pullData({api: 'entrevistas'})
-
-                this.cui = ''
-                this.nombre = ''
-                this.apellidos = ''
-                this.cargo = ''
-                this.nombre_iglesia = ''
-                this.telefono = ''
-                this.correo = ''
-                this.pais = ''
-                this.area = ''
-                this.region = ''
-                
-
-                this.set_datos_personales('')
-                //this.$emit('comprobacion', 'modulo_1')
 
             
         },
